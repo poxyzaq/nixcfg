@@ -13,6 +13,7 @@
 	settings = let
         startNoctaliaExe = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia;
         noctaliaExe = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia;
+	ghosttyExe = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.myGhostty;
       in {
         prefer-no-csd = null;
 
@@ -36,8 +37,6 @@
             accel-profile = "flat";
           };
         };
-
-	
 
 	outputs = {
           "eDP-1" = {
@@ -70,7 +69,7 @@
         }];
 
         binds = {
-          "Mod+Backspace".spawn-sh = lib.getExe pkgs.ghostty;
+          "Mod+Backspace".spawn-sh = ghosttyExe;
           "Mod+Space".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
 
           "Mod+Q".close-window = null;
@@ -78,6 +77,12 @@
           "Mod+G".fullscreen-window = null;
           "Mod+Shift+F".toggle-window-floating = null;
           "Mod+C".center-column = null;
+
+ 	  "Mod+Page_Down".focus-workspace-down = null;
+ 	  "Mod+Page_Up".focus-workspace-up = null;
+
+	  "Mod+Tab".focus-monitor-right = null;
+          "Mod+Shift+Tab".focus-monitor-left = null;
 
           "Mod+Left".focus-column-left = null;
           "Mod+Right".focus-column-right = null;
@@ -146,7 +151,7 @@
         };
 
 	  layout = {
- 	    gaps = 5;
+ 	    gaps = 10;
             focus-ring = {
               width = 2;
               #active-color = "#${self.themeNoHash.base09}";

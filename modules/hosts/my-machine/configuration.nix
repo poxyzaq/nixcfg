@@ -3,6 +3,9 @@
     imports = [
       self.nixosModules.hardware
       self.nixosModules.niri
+      self.nixosModules.noctalia
+      self.nixosModules.ghostty
+      self.nixosModules.helium
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -10,9 +13,9 @@
     nixpkgs.config.allowUnfree = true;
     environment = {
       systemPackages = with pkgs; [
+        fastfetch
         spotifywm
 	vesktop
-	firefox
         neovim
         tealdeer
         wget
@@ -20,10 +23,17 @@
         tree
         bat
 	git
+	wev
+	pciutils
+	mesa-demos
       ];
 
       sessionVariables = {
         NIXOS_OZONE_WL = "1";
+	__NV_PRIME_RENDER_OFFLOAD = "1";
+        __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        __VK_LAYER_NV_OPTIMUS = "NVIDIA_only";
       };
     };
 
