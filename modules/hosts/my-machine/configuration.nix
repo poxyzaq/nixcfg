@@ -26,6 +26,7 @@
 	wev
 	pciutils
 	mesa-demos
+	pass
       ];
 
       sessionVariables = {
