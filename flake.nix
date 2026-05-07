@@ -7,6 +7,7 @@
     import-tree.url = "github:vic/import-tree";
     wrappers.url = "github:lassulus/wrappers";
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs = inputs:
