@@ -31,6 +31,8 @@
                     dotnet-runtime_10
                     dotnet-aspnetcore_10
                     wl-clipboard
+                    pavucontrol
+                    alsa-utils
             ];
 
             sessionVariables = {
@@ -50,7 +52,10 @@
 
             pipewire = {
                 enable = true;
+                alsa.enable = true;
+                alsa.support32Bit = true;
                 pulse.enable = true;
+                jack.enable = true;
             };
 
             libinput.enable = true;
@@ -91,6 +96,8 @@
         };
 
         hardware = {
+            alsa.enablePersistence = true;
+
             graphics = {
                 enable = true;
                 enable32Bit = true;
@@ -122,4 +129,4 @@
 
         system.stateVersion = "25.11";
     };
-                        }
+}
